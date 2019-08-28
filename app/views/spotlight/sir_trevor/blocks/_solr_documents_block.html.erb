@@ -2,14 +2,14 @@
 
 <div class="content-block items-block row">
   <% if solr_documents_block.documents? %>
-
+<% byebug %>
     <div class="items-col spotlight-flexbox pull-<%= solr_documents_block.content_align %> <%= solr_documents_block.text? ? "col-md-6" : "col-md-12" %> ">
       <% solr_documents_block.each_document do |block_options, document| %>
         <% doc_presenter = index_presenter(document) %>
         <div class="box" data-id="<%= document.id %>">
           <div class="contents">
             <% if block_options[:thumbnail_image_url].present? %>
-              <div class="thumbnail"><%= link_to_document(document, image_tag(block_options[:thumbnail_image_url]), counter: -1) %></div>
+              <div class="thumbnail"><%= link_to_document(document, image_tag(block_options[:thumbnail_image_url], alt: doc_presenter.field_value(solr_documents_block.alt_text)), counter: -1) %></div>
             <% elsif ((block_options[:iiif_tilesource_base].present?) && (block_options[:iiif_tilesource_base] != "undefined"))  %>
               <div class="thumbnail"><%= link_to_document(document, image_tag(block_options[:iiif_tilesource_base] + '/full/!400,400/0/default.jpg'), counter: -1) %></div>
             <% elsif has_thumbnail? document %>
