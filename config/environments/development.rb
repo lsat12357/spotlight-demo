@@ -61,4 +61,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.active_job.queue_adapter = ENV.fetch('ACTIVE_JOB_QUEUE_ADAPTER', 'inline').to_sym
+
+  config.x.analytics.url = ENV['ANALYTICS_URL']
+  config.x.analytics.site_key = ENV['ANALYTICS_KEY']
 end

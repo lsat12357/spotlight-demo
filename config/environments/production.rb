@@ -98,4 +98,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.active_job.queue_adapter = ENV.fetch('ACTIVE_JOB_QUEUE_ADAPTER', 'inline').to_sym
+
+  config.x.analytics.url = ENV['ANALYTICS_URL']
+  config.x.analytics.site_key = ENV['ANALYTICS_KEY']
+
 end
